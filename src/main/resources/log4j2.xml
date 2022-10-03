@@ -2,7 +2,7 @@
 <Configuration status="FATAL">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT" ignoreExceptions="true">
-            <PatternLayout pattern="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} [[%X{TX-ID}]] %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{%X}{faint} %clr{:}{faint} %m%n%xwEx"> </PatternLayout>
+            <PatternLayout pattern="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} [[%X{TX-ID}]] %clr{%5p} %clr{${sys:PID}}{magenta} %m%n%xwEx"> </PatternLayout>
         </Console>
     </Appenders>
     <Loggers>
