@@ -1,0 +1,11 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: after_route
+        uri: https://reqres.in
+        predicates:
+        - Path=/users/1
+        filters:
+        - SetPath=/api/users/1
