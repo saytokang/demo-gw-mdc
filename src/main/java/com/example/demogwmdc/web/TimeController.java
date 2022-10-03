@@ -15,14 +15,16 @@ import reactor.core.publisher.Flux;
 @RestController
 @RequestMapping("/time")
 public class TimeController {
-    
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<?> time() {
-        log.info("time function all()");
-        return Flux.interval(Duration.ofSeconds(1))
-        // .take(5)
-        .map(i -> LocalDateTime.now())
-        .doOnSubscribe(s -> log.info("timer begin...."))
-        .doOnNext(time -> log.info("{}", time));
-    }
+
+	@GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<?> time() {
+		log.info("time function all()");
+		return Flux.interval(Duration.ofSeconds(1))
+				// .take(5)
+				.map(i -> {
+					log.info("seq: {}", i);
+					return LocalDateTime.now();
+				}).doOnSubscribe(s -> log.info("timer begin....")).doOnNext(time -> log.info("{}", time));
+	}
+
 }

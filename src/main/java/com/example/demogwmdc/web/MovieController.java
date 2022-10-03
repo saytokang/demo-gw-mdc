@@ -15,17 +15,19 @@ import reactor.core.publisher.Flux;
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
-    Stream<String> movies = Stream.of("범죄도시", "기생충", "비상상황", "우영우");
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<?> get() {
-        log.info("----- call movie get");
+	Stream<String> movies = Stream.of("범죄도시", "기생충", "비상상황", "우영우");
 
-        // @formatter:off
+	@GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<?> get() {
+		log.info("----- call movie get");
+
+		// @formatter:off
         return Flux.fromStream(movies)
         .doOnSubscribe(s -> log.info("streaming begin", s))
         .delayElements(Duration.ofSeconds(1))
         .doOnNext(m -> log.info("playing {}", m));
         // @formatter:on
-    }
+	}
+
 }
