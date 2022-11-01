@@ -22,7 +22,7 @@ public class MDCHandler implements HttpHandlerDecoratorFactory {
                 handler.handle(req, res)
                 .contextWrite(ctx -> {
                     String txId = UUID.randomUUID().toString();
-                    MDC.put(TX_ID, txId);
+                    MDC.put(TX_ID, txId);                    
                     return Context.of(TX_ID, txId);
                 });
         // @formatter:on

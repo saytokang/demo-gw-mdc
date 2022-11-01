@@ -1,7 +1,14 @@
 
 spring:
+
+  redis:
+    host: 106.10.54.127
+    port: 6379
+
   cloud:
     gateway:
+      default-filters:
+      - RouteLog
       routes:
       - id: after_route
         uri: https://reqres.in
@@ -9,3 +16,4 @@ spring:
         - Path=/users/1
         filters:
         - SetPath=/api/users/1
+        # - RouteLog
